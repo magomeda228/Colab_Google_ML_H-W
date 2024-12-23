@@ -13,3 +13,19 @@
 
 Результаты анализа позволили сделать вывод, что для данного датасета оптимальным вариантом является использование метода Momentum без применения L2-регуляризации,
 что обеспечивает более быстрое и эффективное обучение модели с минимальными затратами времени.
+
+In the framework of the conducted study, gradient descent methods, including Linear Regression, Vanilla Gradient Descent, Stochastic Gradient Descent, and Momentum Gradient Descent, were implemented.
+Each of these methods was further modified to apply L2 regularization. Model evaluation was carried out using different loss functions: MSE, MAE, Logcosh, and Huber. 
+All methods were tested on a dataset of car sales listings from the German eBay website.
+
+During the experiments, the optimal hyperparameter settings were identified: the R² metric began to show improvements when the regularization parameter λ was set to 10⁻³ and tolerance to 0.1 for all methods.
+The value of the coefficient µ in the range from 10⁻⁴ to 10⁻¹ with a step of 10⁻¹ had no significant effect on the model's performance.
+
+Point graphs were created to analyze the performance of methods based on λ values and loss function types without regularization.
+The results revealed that the Momentum method demonstrates the fastest and most stable response to changes in λ, regardless of the chosen loss function.
+
+For the Stochastic Gradient Descent method without L2 regularization, a dependency between the number of iterations and batch size was established.
+The graphs showed a linear decrease in statistical metrics as the batch size increased, accompanied by an increase in training time.
+
+The analysis results led to the conclusion that for this dataset, the optimal choice is the use of the Momentum method without L2 regularization,
+as it ensures faster and more efficient model training with minimal time costs.
