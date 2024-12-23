@@ -1,0 +1,58 @@
+В рамках работы с методом Linear Regression был проведен анализ датасета такси в Нью-Йорке. Были построены логарифмические распределения частоты поездок от логарифмической и линейной длительности. 
+Также были выявлены несколько исключительных минимальных значений по времени на протяжении всей временной выборки "поимки" такси. В результате было установлено, что среднее время поездки составляет около 959 секунд (16 минут),
+а максимальное время — 3.5 × 10⁶ секунд, что скорее всего соответствует аномальным выбросам.
+
+Были построены гистограммы количества поездок в зависимости от дня недели. Основной пик приходится на конец рабочей части недели, минимальное количество наблюдается в понедельник. 
+Также из гистограммы распределений количества поездок по времени посадки пассажиров видно, что минимальное количество (<20000) приходится на 5-6 утра, затем наблюдается стабилизация в полуденное время и активный рост в вечерний пик (17-18 часов).
+
+Анализ зависимости количества поездок от месяца и часа дня показал, что максимум наблюдается почти в каждый час в марте и апреле, в то время как минимум — в июле.
+По гистограмме зависимости количества поездок от часа дня и дня месяца невозможно сделать определенные выводы в силу хаотичности данных.
+
+Для логарифмического значения длительности поездки были построены гистограммы по дням недели, часам дня и дням месяца. 
+Здесь также видно, что минимальные значения приходятся на понедельник (6.80-6.82) и воскресенье, в то время как в будние дни наблюдается плато с максимальными значениями (6.88-6.92). 
+По часам суток минимальные значения приходятся на 5-7 утра (~6.7 логарифмических секунд), а пик наблюдается в 15 часов дня (7.0 логарифмических секунд).
+
+Также была построена зависимость скорости от частоты поездок, и среднее значение скорости составило около 10 км/ч. 
+На основе данных была построена тепловая карта медианной скорости от часа дня и дня недели, где обнаружено, 
+что в первой половине недели (понедельник — пятница с полуночи до 6-7 утра) наблюдается максимальная скорость такси (23-15 км/ч).
+Минимальная скорость была зафиксирована в полдень с понедельника по четверг (9-10 км/ч), что логично связано с загруженностью дорог в дневное время.
+
+Также были исследованы категориальные признаки ('vendor_id', 'passenger_count', 'store_and_fwd_flag') с числовыми.
+Эти признаки были закодированы с помощью One-Hot Encoding, и с использованием Ridge-регрессии было получено значение метрики R² = 0.7501 (без учета этих признаков — 0.75).
+Это позволяет сделать вывод о малом влиянии этих признаков на модель, и, возможно, их можно исключить из дальнейшего анализа.
+
+Для дальнейшего анализа была построена зависимость частоты поездок от расстояния (через разницу координат). 
+После исключения аномальных значений выше 99-го квантиля метрика R² улучшилась до 0.755. В распределении расстояний также были выявлены выбросы около поездок на 10 км и 20 км,
+что открывает дополнительные пути для анализа.
+
+В дальнейшем планируется завершить анализ и добавить квадратные области как признаки для дальнейшего улучшения качества метрики.
+
+
+In the study using Linear Regression, an analysis was conducted on the New York taxi dataset.
+Logarithmic distributions of trip frequency were plotted against both logarithmic and linear trip durations. 
+Several exceptional minimal values of trip times were observed throughout the entire time span of the "taxi catch" sampling period.
+The analysis revealed that the average trip time is approximately 959 seconds (16 minutes), with a maximum time of 3.5 × 10⁶ seconds, which likely corresponds to anomalous outliers.
+
+Histograms of trip counts by day of the week were constructed. The main peak occurs towards the end of the workweek, while the minimum is observed on Monday. 
+Additionally, the histogram of trips by passenger pickup time shows that the minimum number of trips (<20,000) occurs at 5-6 AM, followed by stabilization around midday,
+and a sharp increase during the evening rush hour (5-6 PM).
+
+The analysis of the trip count by month and hour of the day revealed that the maximum is observed almost every hour in March and April, 
+while the minimum occurs in July. The histogram of trip counts by hour of the day and day of the month does not provide clear conclusions due to the chaotic nature of the data.
+
+For the logarithmic trip duration, histograms were constructed by day of the week, hour of the day, and day of the month. It was found that the minimum values occur on Monday (6.80-6.82) and Sunday, 
+while weekdays show a plateau with maximum values (6.88-6.92). By hour, the minimum is observed between 5-7 AM (~6.7 logarithmic seconds), with a peak at 3 PM (7.0 logarithmic seconds).
+
+A dependency of speed on trip frequency was also established, and the average speed was found to be around 10 km/h.
+A heatmap of median speed by hour of the day and day of the week was created, revealing that the highest taxi speeds (23-15 km/h) are observed early in the week (Monday to Friday, 
+from midnight to 6-7 AM). The lowest speed is recorded around midday from Monday to Thursday (9-10 km/h), which aligns with road congestion during daytime hours.
+
+Categorical features ('vendor_id', 'passenger_count', 'store_and_fwd_flag') were also examined alongside numerical features.
+These were encoded using One-Hot Encoding, and using Ridge regression, an R² value of 0.7501 was obtained (without considering these features, the value was 0.75). 
+This suggests that these features have minimal impact on the model and may potentially be excluded from further analysis.
+
+Further analysis was conducted on the frequency of trips in relation to distance (via the coordinate difference). 
+After excluding anomalous values above the 99th percentile, the R² metric improved to 0.755. Outliers were also identified in the distance distribution around 10 km and 20 km trips, 
+providing additional directions for analysis.
+
+In the future, it is planned to complete the analysis and add squared areas as features to further improve the model's performance.
