@@ -1,0 +1,19 @@
+В данной лабораторной работе проводился анализ и оптимизация моделей классификации
+с использованием алгоритмов LogisticRegression и SVC на основе различных гиперпараметров и методов кодирования категориальных признаков. 
+Определение оптимальных значений гиперпараметров для обеих моделей позволило достичь наилучших результатов в метках AUC_ROC и AUC_PR. 
+Для LogisticRegression наиболее подходящим оказался гиперпараметр C=1.0, при котором наблюдается стабилизация метрик, тогда как при меньших значениях C модель плохо классифицировала объекты.
+Для SVC оптимальным гиперпараметром оказался C=0.1, после которого метрики достигли оптимальных значений, а дальнейшее увеличение C не улучшало результаты. 
+Важным этапом было использование калибровки моделей с помощью CalibratedClassifierCV, что позволило добиться небольших, 
+но значимых улучшений в метриках Log_loss и Brier loss.
+
+Методы кодирования категориальных признаков также играли ключевую роль в улучшении производительности моделей.
+OneHotEncoding продемонстрировало лучшие результаты по метке AUC_PR по сравнению с LabelEncoder и TargetEncoding. 
+Однако методы TargetEncoding и LinearRegression показали худшие метрики, но зато затрачивали меньше времени на обработку данных. 
+В рамках работы также был проведен отбор топ-40 признаков, что позволило оценить влияние удаления менее значимых признаков на точность модели.
+После разделения данных на обучающую и валидационную выборки метрика AUC_PR на валидации улучшилась, что подтверждает эффективность оптимизации модели с использованием правильных признаков.
+
+В результате работы были сделаны выводы о важности выбора правильных гиперпараметров, методов кодирования и отбора признаков для построения более точных и стабильных классификаторов.
+
+In this laboratory work, an analysis and optimization of classification models were conducted using the LogisticRegression and SVC algorithms based on various hyperparameters and categorical feature encoding methods. The determination of optimal hyperparameter values for both models led to the best results in AUC_ROC and AUC_PR metrics. For LogisticRegression, the most suitable hyperparameter was C=1.0, at which the metrics stabilized, while at lower values of C, the model performed poorly in classifying objects. For SVC, the optimal hyperparameter was C=0.1, after which the metrics reached their optimal values, and further increases in C did not improve the results. An important step was the use of model calibration via CalibratedClassifierCV, which resulted in small but significant improvements in Log_loss and Brier loss metrics.
+
+Categorical feature encoding methods also played a key role in improving model performance. OneHotEncoding demonstrated the best results for the AUC_PR metric compared to LabelEncoder and TargetEncoding. However, TargetEncoding and LinearRegression methods showed worse metrics, but they consumed less time for data processing. In the course of the work, top-40 feature selection was also performed, which allowed assessing the impact of removing less significant features on model accuracy. After splitting the data into training and validation sets, the AUC_PR metric improved on the validation set, confirming the effectiveness of model optimization using the right features. The conclusions drawn from this work emphasize the importance of selecting the correct hyperparameters, encoding methods, and feature selection for building more accurate and stable classifiers.
